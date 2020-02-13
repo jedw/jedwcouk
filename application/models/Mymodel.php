@@ -10,15 +10,11 @@ class mymodel extends CI_Model {
 	public $tags;
 	public $body;
 
-	public function __construct()
-    {
+	public function __construct(){
         parent::__construct();
     }
 
-	public function getPosts ()
-	{
-        //$data[] = new mymodel;
-
+	public function getPosts (){
 		$this->db->order_by("id","desc");
         $q = $this->db->get('blog','desc');
         if ($q->num_rows()>0) {
@@ -29,10 +25,7 @@ class mymodel extends CI_Model {
         }
     }
 
-	function getPost($postid)
-	{
-		//$data[] = new mymodel;
-
+	function getPost($postid){
 		$q = $this->db->get_where('blog', array('id' => $postid));
 		if ($q->num_rows()>0) {
             foreach ($q->result() as $row) {
