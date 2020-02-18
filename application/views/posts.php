@@ -6,15 +6,7 @@
 <?php include('smlinks.php');?>
 <h1>Jonathan Edwards</h1>
 </header>
-<nav>
-<ul>
-<li><a href="../../..">Home</a></li>
-<li><a class="current" href="/index.php/home/posts">POSTS</a></li>
-<li><a href="#">LINK</a></li>
-<li><a href="#">LINK</a></li>
-<li><a href="#">LINK</a></li>
-</ul>
-</nav>
+<?php include 'navbar.php'; ?>
 <main>
 <?php 
 

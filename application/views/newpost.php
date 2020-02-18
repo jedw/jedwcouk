@@ -7,15 +7,7 @@
 <a href="https://www.facebook.com/jonathan.edwards.uclan" style="margin:0"><img src="http://jedw.co.uk/public/img/facebook.png" alt="facebook" style="width:32px;margin:0 0 0 1em"/></a>
 <h1>Jonathan Edwards</h1>
 </header>
-<nav>
-<ul>
-<li><a class="current" href="#">Home</a></li>
-<li><a href="/index.php/home/posts">POSTS</a></li>
-<li><a href="#">LINK</a></li>
-<li><a href="#">LINK</a></li>
-<li><a href="#">LINK</a></li>
-</ul>
-</nav>
+<?php include 'navbar.php'; ?>
 <main>
 <?php
 echo form_open('/secret/insert');

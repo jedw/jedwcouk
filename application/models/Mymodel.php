@@ -14,10 +14,9 @@ class mymodel extends CI_Model {
         parent::__construct();
     }
 
-	public function getPosts (){
-		$this->db->order_by("id","desc");
-        $q = $this->db->get('blog','desc');
-        if ($q->num_rows()>0) {
+	public function getPosts(){
+        $q = $this->db->get('blog');
+        if ($q->num_rows() > 0) {
             foreach ($q->result() as $row) {
                 $data[] = $row;
             }
@@ -27,7 +26,7 @@ class mymodel extends CI_Model {
 
 	function getPost($postid){
 		$q = $this->db->get_where('blog', array('id' => $postid));
-		if ($q->num_rows()>0) {
+		if ($q->num_rows() > 0) {
             foreach ($q->result() as $row) {
                 $data[] = $row;
             }

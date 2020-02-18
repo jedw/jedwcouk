@@ -8,14 +8,10 @@ class Secret extends CI_Controller {
 	}
 
 	public function verify(){
-		$this->load->library('session');
-
 		if($this->input->post('passcode')== "pink"){
 			$this->session->set_userdata('admin', 'TRUE');
-			redirect('/secret/review', 'refresh');
-		}
-
-		else{
+			$this->review();
+		}else{
 			$this->session->set_userdata('admin', 'FALSE');
 			$this->load->view('secret');
 		}
@@ -28,27 +24,24 @@ class Secret extends CI_Controller {
 	public function insert(){
 		if(!isset($_SESSION['admin'])){
 			$this->load->helper('url');
-			redirect('/secret', 'refresh');
+			$this->index();
 		}else{
-			$this->load->model('secretmodel');
 			$data = array (
 				'title' => $this->input->post('title'),
 				'date' => $this->input->post('date'),
 				'body' => $this->input->post('body'),
 				'tags' => $this->input->post('tags')
 			);
-
-        $this->secretmodel->insert($data);
-			echo"<p>New post added</p>"; //this is naughty becasue it's breaking the MVC pattern
+        	$this->secretmodel->insert($data);
+			$this->review();
 		}
 	}
 
 	public function review(){
 		if(!isset($_SESSION['admin'])){
 			$this->load->helper('url');
-			redirect('/secret', 'refresh');
+			$this->index();
 		}else{
-			$this->load->model('mymodel');
 			$data['posts'] = $this->mymodel->getPosts();
 			$this->load->view('review',$data);
 		}
@@ -57,9 +50,8 @@ class Secret extends CI_Controller {
 	public function delete(){
     	if(!isset($_SESSION['admin'])){
 			$this->load->helper('url');
-			redirect('/secret', 'refresh');
+			$this->index();
 		}else{
-			$this->load->model('secretmodel');
 			$id = $this->uri->segment(3);
 			$this->secretmodel->delete_row($id);
 			$this->review();

@@ -3,19 +3,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class secretmodel extends CI_Model{
 
-public $title;
-public $date;
-public $body;
-public $tags;
+    public $id;
+    public $title;
+    public $date;
+    public $body;
+    public $tags;
 
 	public function __construct(){
         parent::__construct();
     }
 
     public function insert($data) {
-        $insert = new secretmodel;
-        $insert = $data;
-        $this->db->insert('blog',$insert);
+        $this->db->insert('blog', $data);
     }
 
 	function delete_row($id){

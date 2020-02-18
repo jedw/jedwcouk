@@ -8,14 +8,14 @@
 </header>
 <nav>
 <ul>
-<li><a href="../../..">Home</a></li>
-<li><a class="current" href="/index.php/home/posts">POSTS</a></li>
+<li><a href="<?php echo site_url();?>">Home</a></li>
+<li><a class="current" href="<?php echo site_url('/home/posts');?>">POSTS</a></li>
 <li><a href="#">LINK</a></li>
 <li><a href="#">LINK</a></li>
 <li><a href="#">LINK</a></li>
 </ul>
-    <ul><li><a href="/index.php/secret/newpost">CLICK TO ADD NEW POST</a></li>
-	<li><a href="/index.php/secret/destroy">DESTROY SESSION AND LOGOUT</a></li>
+    <ul><li><a href="<?php echo site_url('/secret/newpost');?>">NEW POST</a></li>
+	<li><a href="<?php echo site_url('/secret/destroy');?>">LOGOUT</a></li>
     </ul>
 </nav>
 <main>
@@ -26,7 +26,7 @@ foreach ($posts as $row){
 	echo '<div class="post">';
 	echo '<div class="posttitle">';
 	echo anchor ("home/post/$row->id", "<h2>$row->title</h2>");
-	echo'</div>';
+	echo '</div>';
 	echo '<p>'.$row->date.'</p>';
 	echo '<p>'.$row->body.'</p>';
     
@@ -37,17 +37,14 @@ foreach ($posts as $row){
     {
       echo'<a href="#"><p style="display:inline">'.$item.'</p></a>';
     }
-    
-	//echo '<p class="tags">'.$row->tags.'</p>';
-    echo '<br/>';
-    echo anchor ("secret/delete/$row->id", "delete post $row->title");
-	echo '</div>';
+    echo '<br/><p style="display:inline">';
+    echo anchor ("secret/delete/$row->id", "delete");
+	echo '</p></div>';
 
 }
-	?>
+?>
 </main>
 <br/>
 </div>
-
 </body>
 </html>

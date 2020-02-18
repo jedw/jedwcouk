@@ -6,15 +6,7 @@
 <?php include('smlinks.php');?>
 <h1>Jonathan Edwards</h1>
 </header>
-<nav>
-<ul>
-<li><a class="current" href="#">Home</a></li>
-<li><a href="/index.php/home/posts">POSTS</a></li>
-<li><a href="#">LINK</a></li>
-<li><a href="#">LINK</a></li>
-<li><a href="#">LINK</a></li>
-</ul>
-</nav>
+<?php include 'navbar.php'; ?>
 <main>
 <h1>Welcome to my webpage</h1>
 <img src="../public/img/me.jpg" alt="Jonathan Edwards" style="width:33%"/>
