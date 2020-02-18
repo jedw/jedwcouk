@@ -20,11 +20,11 @@ foreach ($posts as $row){
 	echo '<p>'.$row->body.'</p>';
     
     $csv = $row->tags;
-    $myArray = explode(',', $csv);
+    $myArray = explode(', ', $csv);
 
     foreach ($myArray as $item)
     {
-      echo'<a href="#"><p style="display:inline">'.$item.'</p></a>';
+		echo anchor ("home/tagpost/$item", $item." ");
     }
     //echo '<p class="tags">'.$row->tags.'</p>';
 	echo '</div>';			

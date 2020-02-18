@@ -16,4 +16,9 @@ class home extends CI_Controller {
 		$data['posts'] = $this->mymodel->getPost($this->uri->segment(3));
 		$this->load->view('posts', $data);
 	}
+
+	public function tagpost(){
+		$data['posts'] = $this->mymodel->getPostsByTag($this->uri->segment(3));
+		$this->load->view('posts', $data);
+	}
 }

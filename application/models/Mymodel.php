@@ -15,22 +15,18 @@ class mymodel extends CI_Model {
     }
 
 	public function getPosts(){
-        $q = $this->db->get('blog');
-        if ($q->num_rows() > 0) {
-            foreach ($q->result() as $row) {
-                $data[] = $row;
-            }
-            return $data;
-        }
+        $data = $this->db->get('blog')->result();
+        return $data;
     }
 
-	function getPost($postid){
-		$q = $this->db->get_where('blog', array('id' => $postid));
-		if ($q->num_rows() > 0) {
-            foreach ($q->result() as $row) {
-                $data[] = $row;
-            }
-            return $data;
-		}
-	}
+	public function getPost($postid){
+		$data = $this->db->get_where('blog', array('id' => $postid))->result();
+        return $data;
+    }
+    
+    public function getPostsByTag($tag){
+        $this->db->like('tags', $tag);
+        $data = $this->db->get('blog')->result();
+        return $data;
+    }
 }
